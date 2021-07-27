@@ -1,5 +1,4 @@
 // this file makes schemas, similar to migration files in knex for psql
-
 import mongoose from 'mongoose';
 
 const postSchema = mongoose.Schema({
@@ -10,11 +9,11 @@ const postSchema = mongoose.Schema({
   selectedFile: String,
   likeCount: {
     type: Number,
-    defaut: 0
+    default: 0,
   },
   createdAt: {
     type: Date,
-    default: new Date()
+    default: new Date(),
   },
 })
 
