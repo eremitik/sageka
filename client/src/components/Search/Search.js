@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Container, Grow, Grid, AppBar, TextField, Button, Typography, Paper } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import ChipInput from "material-ui-chip-input";
+// import ChipInput from "material-ui-chip-input";
 import { makeStyles } from '@material-ui/core/styles';
 import { getPostsBySearch } from "../../actions/posts"
 
@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
     padding: '16px',
     boxShadow: 'none',
   },
+  searchField: {
+    marginBottom: '10px',
+  },
   searchButton: {
     marginBottom: 10,
     backgroundColor: 'black',
@@ -32,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Search = () => {
   const [search, setSearch] = useState("")
-  const [tags, setTags] = useState([])
+  // const [tags, setTags] = useState([])
 
   const classes = useStyles();
   const history = useHistory();
@@ -44,13 +47,13 @@ const Search = () => {
     }
   }
 
-  const handleAdd = (tag) => setTags([...tags, tag])
-  const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete))
+  // const handleAdd = (tag) => setTags([...tags, tag])
+  // const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete))
 
   const searchPost = () => {
-    if (search.trim() || tags) {
-      dispatch(getPostsBySearch({ search, tags: tags.join(',') }))
-      history.push(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`)
+    if (search.trim()) {
+      dispatch(getPostsBySearch({ search }))
+      history.push(`/posts/search?searchQuery=${search || 'none'}`)
     } else {
       history.push('/')
     }
@@ -63,7 +66,9 @@ const Search = () => {
           <Typography variant="h6">Search for a Person</Typography>
           <AppBar className={classes.appBarSearch} position="static" color="inherit">
             <TextField
+              className={classes.searchField}
               name="search"
+              autoComplete="off"
               variant="outlined"
               label="Search Persons"
               fullWidth
@@ -71,14 +76,14 @@ const Search = () => {
               onKeyPress={handleKeyPress}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <ChipInput
+            {/* <ChipInput
               style={{ margin: "10px 0" }}
               value={tags}
               onAdd={handleAdd}
               onDelete={handleDelete}
               label="Search tags"
               variant="outlined"
-            />
+            /> */}
             <Button onClick={searchPost} size="large" className={classes.searchButton} variant="contained">Search</Button>
           </AppBar>
         </Grid>
