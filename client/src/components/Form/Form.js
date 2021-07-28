@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Form = ({ currentId }) => {
   const [postData, setPostData] = useState({
-    creator: "", title: "", message: "", tags: "", selectedFile: "",
+    person: "", promise: "", summary: "", tags: "", selectedFile: "",
   })
   const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null)
   const classes = useStyles();
@@ -57,7 +57,7 @@ const Form = ({ currentId }) => {
   }
 
   const clear = () => {
-    setPostData({ creator: "", title: "", message: "", tags: "", selectedFile: "" })
+    setPostData({ person: "", promise: "", summary: "", tags: "", selectedFile: "" })
   }
 
   return (
@@ -65,28 +65,28 @@ const Form = ({ currentId }) => {
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
         <Typography variant="h6">Submit a Promise</Typography>
         <TextField
-          name="creator"
+          name="person"
           variant="outlined"
-          label="Creator"
+          label="Person"
           fullWidth
-          value={postData.creator}
-          onChange={(e) => setPostData({ ...postData, creator: e.target.value })}
+          value={postData.person}
+          onChange={(e) => setPostData({ ...postData, person: e.target.value })}
         />
         <TextField
-          name="title"
+          name="promise"
           variant="outlined"
-          label="Title"
+          label="Promise"
           fullWidth
-          value={postData.title}
-          onChange={(e) => setPostData({ ...postData, title: e.target.value })}
+          value={postData.promise}
+          onChange={(e) => setPostData({ ...postData, promise: e.target.value })}
         />
         <TextField
-          name="message"
+          name="summary"
           variant="outlined"
-          label="Message"
+          label="Summary"
           fullWidth
-          value={postData.message}
-          onChange={(e) => setPostData({ ...postData, message: e.target.value })}
+          value={postData.summary}
+          onChange={(e) => setPostData({ ...postData, summary: e.target.value })}
         />
         <TextField
           name="tags"

@@ -41,7 +41,7 @@ export default makeStyles({
     justifyContent: 'space-between',
     margin: '20px',
   },
-  title: {
+  promise: {
     padding: '0 16px',
   },
   cardActions: {
