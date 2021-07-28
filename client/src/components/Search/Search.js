@@ -47,7 +47,7 @@ const Search = () => {
     }
   }
 
-  // const handleAdd = (tag) => setTags([...tags, tag])
+  const handleAdd = (tag) => setTags([...tags, tag])
   // const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete))
 
   const searchPost = () => {
