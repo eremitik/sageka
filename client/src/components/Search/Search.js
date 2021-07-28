@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
-import { Container, Grow, Grid, AppBar, TextField, Button, Typography, Paper } from "@material-ui/core";
+import { Container, Grid, AppBar, TextField, Button, Typography, Paper } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-// import ChipInput from "material-ui-chip-input";
 import { makeStyles } from '@material-ui/core/styles';
 import { getPostsBySearch } from "../../actions/posts"
 
 const useStyles = makeStyles((theme) => ({
-  testy: {
+  searchPaper: {
     boxShadow: 'none',
   },
   gridContainer: {
     marginTop: '50px',
-
-    boxShadow: 'none',
   },
   appBarSearch: {
     borderRadius: 4,
@@ -35,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Search = () => {
   const [search, setSearch] = useState("")
-  // const [tags, setTags] = useState([])
 
   const classes = useStyles();
   const history = useHistory();
@@ -47,9 +43,6 @@ const Search = () => {
     }
   }
 
-  const handleAdd = (tag) => setTags([...tags, tag])
-  // const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete))
-
   const searchPost = () => {
     if (search.trim()) {
       dispatch(getPostsBySearch({ search }))
@@ -60,7 +53,7 @@ const Search = () => {
   }
 
   return (
-    <Paper className={classes.testy}>
+    <Paper className={classes.searchPaper}>
       <Container maxWidth="xl" >
         <Grid container justifyContent="center" alignItems="stretch" spacing={3} className={classes.gridContainer}>
           <Typography variant="h6">Search for a Person</Typography>
@@ -76,24 +69,12 @@ const Search = () => {
               onKeyPress={handleKeyPress}
               onChange={(e) => setSearch(e.target.value)}
             />
-            {/* <ChipInput
-              style={{ margin: "10px 0" }}
-              value={tags}
-              onAdd={handleAdd}
-              onDelete={handleDelete}
-              label="Search tags"
-              variant="outlined"
-            /> */}
             <Button onClick={searchPost} size="large" className={classes.searchButton} variant="contained">Search</Button>
           </AppBar>
         </Grid>
       </Container>
     </Paper>
   )
-
-
-
 }
-
 
 export default Search;

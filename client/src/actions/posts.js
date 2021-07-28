@@ -9,11 +9,7 @@ const updatePostAPI = (id, updatedPost) => axios.patch(`${url}/${id}`, updatedPo
 const deletePostAPI = (id) => axios.delete(`${url}/${id}`)
 const likePostAPI = (id) => axios.patch(`${url}/${id}/likePost`);
 const dislikePostAPI = (id) => axios.patch(`${url}/${id}/dislikePost`);
-const fetchPostsBySearchAPI = (searchQuery) => {
-  const linky = axios.get(`${url}/search?searchQuery=${searchQuery.search || 'none'}&tags=${searchQuery.tags}`)
-  // console.log("linky: ", linky)
-  return linky
-}
+const fetchPostsBySearchAPI = (searchQuery) => axios.get(`${url}/search?searchQuery=${searchQuery.search || 'none'}`)
 
 export const getPosts = () => async (dispatch) => {
   try {
@@ -65,7 +61,6 @@ export const dislikePost = (id) => async (dispatch) => {
   try {
     const { data } = await dislikePostAPI(id);
     dispatch({ type: "UPDATE", payload: data })
-
   } catch (err) {
     console.log(err)
   }
@@ -75,11 +70,7 @@ export const getPostsBySearch = (searchQuery) => async (dispatch) => {
   try {
     const { data: { data } } = await fetchPostsBySearchAPI(searchQuery);
     dispatch({ type: "FETCH_BY_SEARCH", payload: data });
-
-    console.log('printing fPBSAPI: ', await fetchPostsBySearchAPI(searchQuery))
-    console.log('searchQuery:', searchQuery)
     console.log('data:', data)
-
   } catch (err) {
     console.log(err)
   }
