@@ -40,6 +40,27 @@ const likePost = async (req, res) => {
   res.json(updatedPost);
 }
 
+const dislikePost = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send("No post with this id");
+  const post = await PostMessage.findById(id);
+  const updatedPost = await PostMessage.findByIdAndUpdate(id, { likeCount: post.likeCount - 1 }, { new: true })
+  res.json(updatedPost);
+}
+
+const getPostsBySearch = async (req, res) => {
+  const { searchQuery, tags } = req.query
+
+  try {
+    const person = new RegExp(searchQuery, 'i');
+    const posts = await PostMessage.find({ person });
+    res.json({ data: posts });
+  } catch (err) {
+    res.status(404).json({ message: err.message })
+  }
+}
+
 
 // routing section
 const router = express.Router();
@@ -49,5 +70,7 @@ router.get('/', getPosts);
 router.post('/', createPost);
 router.delete('/:id', deletePost);
 router.patch('/:id/likePost', likePost);
+router.patch('/:id/dislikePost', dislikePost);
+router.get('/search', getPostsBySearch)
 
 export default router;
