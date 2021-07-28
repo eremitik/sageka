@@ -1,9 +1,9 @@
 import React from "react";
-import { Grid, CircularProgress } from "@material-ui/core";
 import { useSelector } from "react-redux";
 
-import Post from "./Post/Post";
+import { Grid, CircularProgress } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
+import Post from "./Post/Post";
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {

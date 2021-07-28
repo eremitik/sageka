@@ -41,12 +41,27 @@ export default makeStyles({
     justifyContent: 'space-between',
     margin: '20px',
   },
+  person: {
+    fontWeight: 600,
+  },
   promise: {
     padding: '0 16px',
+    fontWeight: 'bold',
+  },
+  summary: {
+    fontWeight: 'normal',
   },
   cardActions: {
     padding: '0 16px 8px 16px',
     display: 'flex',
     justifyContent: 'space-between',
+  },
+  score: {
+    fontWeight: 'bold',
+    color: '#3EB489',
+  },
+  scoreRed: {
+    fontWeight: 'bold',
+    color: 'red',
   },
 });

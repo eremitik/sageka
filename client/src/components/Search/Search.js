@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Container, Grid, AppBar, TextField, Button, Typography, Paper } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+
+import { Container, Grid, AppBar, TextField, Button, Typography, Paper } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import { getPostsBySearch } from "../../actions/posts"
 
@@ -52,6 +53,12 @@ const Search = () => {
     }
   }
 
+  const clearSearch = () => {
+    setSearch("")
+    history.push('/')
+    window.location.reload();    // small hack, until figure out how to re-query quickly
+  }
+
   return (
     <Paper className={classes.searchPaper}>
       <Container maxWidth="xl" >
@@ -70,6 +77,7 @@ const Search = () => {
               onChange={(e) => setSearch(e.target.value)}
             />
             <Button onClick={searchPost} size="large" className={classes.searchButton} variant="contained">Search</Button>
+            <Button onClick={clearSearch} className={classes.clearButton} variant="contained" size="small">Clear</Button>
           </AppBar>
         </Grid>
       </Container>
