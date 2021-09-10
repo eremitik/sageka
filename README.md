@@ -1,11 +1,25 @@
-This was created during my time as a student at Code Chrysalis.
+# Sageka
 
-It was created in the MERN stack, with additional styling from @material-ui/core.
-The app's purpose is to track high-profile peoples' promises made with community scoring.
+A simple website to keep track of promises made by politicians - inspired by Yelp!
+Please visit the site [here](https://sageka.netlify.app/)!
+![home](./home.png)
 
-You can install and run locally with the following:
-`client` == FE, `server` == BE
-1. `npm i` for both `client` and `server` folders.
-2. Create a `.env` in `server` folder with only your password to mongoDB atlas with `DB_PASS=<yourpassword>`
-3. In `server/index.js` edit the username to reflect <yourusername> in `mongoose.connect` method.
-4. `npm start` for each respective part.
+## Quick start
+
+You will need to have a [MongoDB Atlas](https://www.mongodb.com/) instance ready.
+
+```
+npm install
+cd client && npm start
+cd server && npm start
+```
+
+## Technologies used
+
+[React](https://reactjs.org/)\
+[Axios](https://axios-http.com/docs/intro)\
+[Material-UI](https://material-ui.com/)\
+[Moment.js](https://momentjs.com/)\
+[MongoDB](https://www.mongodb.com/)\
+[Mongoose.js](https://mongoosejs.com/docs/api.html)\
+[Redux](https://redux.js.org/)
