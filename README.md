@@ -1,6 +1,6 @@
 # Sageka
 
-A simple website to keep track of promises made by politicians - inspired by Yelp!
+A simple website to keep track of promises made by politicians - inspired by Yelp!\
 Please visit the site [here](https://sageka.netlify.app/)!
 ![home](./home.png)
 
