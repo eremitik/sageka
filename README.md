@@ -1,6 +1,6 @@
 # Sageka
 
-A simple website to keep track of promises made by politicians - inspired by Yelp!
+A simple website to keep track of promises made by politicians - inspired by Yelp.\
 Please visit the site [here](https://sageka.netlify.app/)!
 ![home](./home.png)
 
@@ -11,7 +11,8 @@ You will need to have a [MongoDB Atlas](https://www.mongodb.com/) instance ready
 ```
 npm install
 cd client && npm start
-cd server && npm start
+cd server && cp .env.example
+npm start
 ```
 
 ## Technologies used
