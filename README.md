@@ -11,7 +11,8 @@ You will need to have a [MongoDB Atlas](https://www.mongodb.com/) instance ready
 ```
 npm install
 cd client && npm start
-cd server && npm start
+cd server && cp .env.example
+npm start
 ```
 
 ## Technologies used
